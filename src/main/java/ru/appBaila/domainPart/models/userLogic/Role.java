@@ -1,5 +1,6 @@
 package ru.appBaila.domainPart.models.userLogic;
 
-
-public class UserImpl {
+public enum Role {
+    CUSTOMER,
+    ADMIN
 }
