@@ -12,6 +12,6 @@ public class Outfit {
     private Integer Rating;
     private Integer Size;
     private Double Price;
-    private String Material;
+    private Material Material;
     private String ImageURL;
 }
