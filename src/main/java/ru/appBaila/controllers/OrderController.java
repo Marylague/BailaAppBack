@@ -31,7 +31,6 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("@securityService.hasAdminRole")
     public OrderDto create(@RequestBody OrderDto order) {
-        // checks
         User currentUser = securityService.getCurrentUserInfo();
         return service.save(order, currentUser);
     }
@@ -51,7 +50,6 @@ public class OrderController {
     @PutMapping()
     @PreAuthorize("@securityService.hasAdminRole")
     public OrderDto update(@RequestBody OrderDto dto) {
-        //checks
         User currentUser = securityService.getCurrentUserInfo();
         return service.save(dto, currentUser);
     }

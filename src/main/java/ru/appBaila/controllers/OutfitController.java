@@ -30,7 +30,6 @@ public class OutfitController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("@securityService.hasAdminRole")
     public OutfitDto create(@RequestBody OutfitDto outfit) {
-        // checks
         return service.save(outfit);
     }
 
@@ -49,7 +48,6 @@ public class OutfitController {
     @PutMapping()
     @PreAuthorize("@securityService.hasAdminRole")
     public OutfitDto update(@RequestBody OutfitDto dto) {
-        //checks
         return service.save(dto);
     }
 

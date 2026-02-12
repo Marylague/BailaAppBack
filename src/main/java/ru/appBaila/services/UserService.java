@@ -25,10 +25,16 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserDto save(UserDto dto) {
-        return new UserDto(repository.save(new User(dto)));
-    }
+    public UserDto update(UserDto dto) {
+        User existingUser = repository.findById(dto.getId())
+                .orElseThrow(() -> new UserNotFoundException("User with id " + dto.getId() + " didn't exist"));
 
+        existingUser.setUsername(dto.getUsername());
+        existingUser.setEmail(dto.getEmail());
+        existingUser.setRole(dto.getRole());
+
+        return new UserDto(repository.save(existingUser));
+    }
     public UserDto createUser(RegisterRequest request) {
         User user = new User();
         user.setUsername(request.getUsername());

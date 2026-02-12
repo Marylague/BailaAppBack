@@ -17,7 +17,6 @@ public class UserDto {
     private String username;
     private String email;
     private Role role;
-    // Пароль не передаем в DTO для безопасности
 
     public UserDto(User entity) {
         this.id = entity.getId();

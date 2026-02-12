@@ -41,10 +41,6 @@ public class SecurityService {
         return canAccessUser(userId);
     }
 
-//    public boolean canModifyElement() {
-//        return hasAdminRole();
-//    }
-
     public boolean hasAdminRole() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getAuthorities().stream()

@@ -21,10 +21,8 @@ public class CartService {
         return new CartDto(repository.save(new Cart(dto, user)));
     }
 
-    // update
 
     public CartDto getById(long id) {
-        // + проверка
         return new CartDto(repository.getOne(id));
     }
 
@@ -33,7 +31,6 @@ public class CartService {
     }
 
     public void deleteById(long id) {
-        // проверка на существование
         repository.deleteById(id);
     }
 

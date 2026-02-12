@@ -19,7 +19,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -28,8 +28,6 @@ public class AuthController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-
-
     public AuthResponse register(@Valid @RequestBody RegisterRequest request, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         AuthResponse response = authService.register(request);
         saveSession(servletRequest, servletResponse);
@@ -46,7 +44,6 @@ public class AuthController {
     @PostMapping("/logout")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void logout(HttpServletRequest request) {
-        // Очищаем контекст и инвалидируем сессию
         SecurityContextHolder.clearContext();
         request.getSession().invalidate();
     }
@@ -56,7 +53,6 @@ public class AuthController {
         return authService.getCurrentUser();
     }
 
-    // Вспомогательный метод для сохранения сессии
     private void saveSession(HttpServletRequest request, HttpServletResponse response) {
         SecurityContext context = SecurityContextHolder.getContext();
         securityContextRepository.saveContext(context, request, response);

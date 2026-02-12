@@ -23,7 +23,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Многие к одному: Много заказов могут принадлежать одному пользователю
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -36,10 +35,9 @@ public class Order {
 
     private String comment;
 
-    @CreationTimestamp // Автоматически устанавливает дату создания
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
-    // Один ко многим: В одном заказе много позиций
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
